@@ -4,14 +4,14 @@ import React from 'react'
 import gatsbyLogo from '../images/gatsby-icon.png'
 import rbLogo from '../images/reactbricks-icon.svg'
 
-import './header.css'
+import styles from './header.module.css'
 
 const Header = () => (
-  <header>
-    <div className="container">
-      <div className="header-menu">
-        <div className="left-menu">
-          <div className="logos">
+  <header className={styles.header}>
+    <div className={styles.container}>
+      <div className={styles.headerMenu}>
+        <div className={styles.leftMenu}>
+          <div className={styles.logos}>
             <img src={rbLogo} alt="React Bricks" />
             <img src={gatsbyLogo} style={{ marginLeft: '1rem' }} alt="Gatsby" />
           </div>

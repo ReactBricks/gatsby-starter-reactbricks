@@ -45,7 +45,18 @@ const HeroUnit = ({ title, text, padding, onChange }) => {
           types.RichTextFeatures.Code,
           types.RichTextFeatures.Link,
         ]}
-        renderBold={props => <b className="text-red-500">{props.children}</b>}
+        renderCode={props => (
+          <code
+            style={{
+              fontSize: 13,
+              padding: '2px 4px',
+              backgroundColor: '#e2e8f0',
+              borderRadius: 3
+            }}
+          >
+            {props.children}
+          </code>
+        )}
       />
     </div>
   )

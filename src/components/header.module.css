@@ -1,32 +1,36 @@
-header {
+.header {
   padding-top: 2rem;
 }
 
-header .container {
+.header h1 {
+  font-size: 1.25rem;
+  margin-left: 1rem;
+}
+
+.header a {
+  color: #d9367f;
+}
+
+.header a:hover {
+  color: #b83280;
+}
+
+.header h1 a {
+  color: #2d3748;
+}
+
+.header img {
+  width: 40px;
+}
+
+.container {
   margin: 0 auto;
   max-width: 896;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
 
-header h1 {
-  font-size: 1.25rem;
-  margin-left: 1rem;
-}
-
-header a {
-  color: #2d3748;
-}
-
-header a:hover {
-  color: #b83280;
-}
-
-header img {
-  width: 40px;
-}
-
-header .header-menu {
+.headerMenu {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -34,14 +38,14 @@ header .header-menu {
   align-items: center;
 }
 
-header .left-menu {
+.leftMenu {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 1rem;
 }
 
-header .logos {
+.logos {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -49,15 +53,15 @@ header .logos {
 }
 
 @media (min-width: 640px) {
-  header .header-menu {
+  .headerMenu {
     flex-direction: row;
     justify-content: space-between;
   }
-  header .left-menu {
+  .leftMenu {
     flex-direction: row;
     margin-bottom: 0;
   }
-  header .logos {
+  .logos {
     margin-bottom: 0;
   }
 }
