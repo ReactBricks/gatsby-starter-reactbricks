@@ -14,6 +14,14 @@ header h1 {
   margin-left: 1rem;
 }
 
+header a {
+  color: #2d3748;
+}
+
+header a:hover {
+  color: #b83280;
+}
+
 header img {
   width: 40px;
 }
