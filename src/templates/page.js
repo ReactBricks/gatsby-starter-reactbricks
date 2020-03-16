@@ -1,5 +1,5 @@
 import React from 'react'
-import { ReactBricks, PageViewer, cleanPage } from 'react-bricks'
+import { PageViewer, cleanPage } from 'react-bricks'
 import config from '../react-bricks/config'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -15,12 +15,14 @@ const Page = ({ pageContext: { page } }) => {
   const pageOk = cleanPage(page, config.pageTypeSchema, config.blockTypeSchema)
 
   return (
-    <ReactBricks {...config}>
-      <SEO title={page.meta.title} description={page.meta.description} lang={page.meta.language} />
-      <Layout>
-        <PageViewer page={pageOk} />
-      </Layout>
-    </ReactBricks>
+    <Layout>
+      <SEO
+        title={page.meta.title}
+        description={page.meta.description}
+        lang={page.meta.language}
+      />
+      <PageViewer page={pageOk} />
+    </Layout>
   )
 }
 
