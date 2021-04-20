@@ -1,9 +1,9 @@
 import React from 'react'
 import classNames from 'classnames'
-import { Text, RichText, Plain, types } from 'react-bricks'
+import { Text, RichText, types } from 'react-bricks'
 
 import BlockNames from '../BlockNames'
-import styles from './HeroUnit.module.css'
+import * as styles from './HeroUnit.module.css'
 
 //=============================
 // Padding enum
@@ -16,7 +16,7 @@ const Padding = Object.freeze({
 //=============================
 // Component to be rendered
 //=============================
-const HeroUnit = ({ title, text, padding, onChange }) => {
+const HeroUnit = ({ padding }) => {
   return (
     <div
       className={classNames(
@@ -26,18 +26,14 @@ const HeroUnit = ({ title, text, padding, onChange }) => {
       )}
     >
       <Text
-        renderBlock={props => <h1>{props.children}</h1>}
-        value={title}
+        renderBlock={(props) => <h1>{props.children}</h1>}
         placeholder="Type a title..."
         propName="title"
-        onChange={onChange}
       />
       <RichText
-        renderBlock={props => <p>{props.children}</p>}
-        value={text}
+        renderBlock={(props) => <p>{props.children}</p>}
         placeholder="Type a text..."
         propName="text"
-        onChange={onChange}
         allowedFeatures={[
           types.RichTextFeatures.Bold,
           types.RichTextFeatures.Italic,
@@ -45,13 +41,13 @@ const HeroUnit = ({ title, text, padding, onChange }) => {
           types.RichTextFeatures.Code,
           types.RichTextFeatures.Link,
         ]}
-        renderCode={props => (
+        renderCode={(props) => (
           <code
             style={{
               fontSize: 13,
               padding: '2px 4px',
               backgroundColor: '#e2e8f0',
-              borderRadius: 3
+              borderRadius: 3,
             }}
           >
             {props.children}
@@ -61,47 +57,32 @@ const HeroUnit = ({ title, text, padding, onChange }) => {
     </div>
   )
 }
-
-//=============================
-// Get Default Props
-//=============================
-const getDefaultProps = () => ({
-  padding: Padding.Big,
-  title: Plain.deserialize('We develop beautiful web applications'),
-  text: Plain.deserialize(
-    "We are a hi-tech web development company committed to deliver great products on time. We love to understand our customers' needs and exceed expectations."
-  ),
-})
-
-//=============================
-// Side Edit Props
-//=============================
-const sideEditProps = [
-  {
-    name: 'padding',
-    label: 'Padding',
-    type: types.SideEditPropType.Select,
-    selectOptions: {
-      display: types.OptionsDisplay.Select,
-      options: [
-        { value: Padding.Big, label: 'Big Padding' },
-        { value: Padding.Small, label: 'Small Padding' },
-      ],
-    },
-  },
-]
-
 //=============================
 // Exported BlockType Schema
 //=============================
-const schema = {
+HeroUnit.schema = {
   name: BlockNames.HeroUnit,
   label: 'Hero Unit',
-  superType: types.BlockSuperType.Single,
-  render: props => <HeroUnit {...props} />,
-  getDefaultProps,
-  sideEditProps,
-  textEditProps: ['title', 'text'],
+  getDefaultProps: () => ({
+    padding: Padding.Big,
+    title: 'We develop beautiful web applications',
+    text:
+      "We are a hi-tech web development company committed to deliver great products on time. We love to understand our customers' needs and exceed expectations.",
+  }),
+  sideEditProps: [
+    {
+      name: 'padding',
+      label: 'Padding',
+      type: types.SideEditPropType.Select,
+      selectOptions: {
+        display: types.OptionsDisplay.Select,
+        options: [
+          { value: Padding.Big, label: 'Big Padding' },
+          { value: Padding.Small, label: 'Small Padding' },
+        ],
+      },
+    },
+  ],
 }
 
-export default schema
+export default HeroUnit

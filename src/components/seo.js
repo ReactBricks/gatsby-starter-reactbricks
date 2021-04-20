@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 
-const SEO = ({ title = '', description = '', lang = 'en', meta = [] }) => {
+const Seo = ({ title = '', description = '', lang = 'en', meta = [] }) => {
   return (
     <Helmet
       htmlAttributes={{ lang }}
@@ -46,11 +46,11 @@ const SEO = ({ title = '', description = '', lang = 'en', meta = [] }) => {
   )
 }
 
-SEO.propTypes = {
+Seo.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
 }
 
-export default SEO
+export default Seo

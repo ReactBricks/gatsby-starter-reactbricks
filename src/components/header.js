@@ -1,28 +1,31 @@
-import { Link } from 'gatsby'
 import React from 'react'
+import { Link } from 'gatsby'
 
-import gatsbyLogo from '../images/gatsby-icon.png'
-import rbLogo from '../images/reactbricks-icon.svg'
+import * as styles from './Header.module.css'
 
-import styles from './header.module.css'
-
-const Header = () => (
-  <header className={styles.header}>
-    <div className={styles.container}>
-      <div className={styles.headerMenu}>
-        <div className={styles.leftMenu}>
-          <div className={styles.logos}>
-            <img src={rbLogo} alt="React Bricks" />
-            <img src={gatsbyLogo} style={{ marginLeft: '1rem' }} alt="Gatsby" />
+const Header = () => {
+  return (
+    <header className={styles.header}>
+      <div className={styles.container}>
+        <div className={styles.headerContent}>
+          <div className={styles.logoMenuWrapper}>
+            <img
+              src="/react-bricks-logo.svg"
+              className={styles.logo}
+              alt="React Bricks"
+            />
+            <div className={styles.headerMenu}>
+              <Link href="/" className={styles.menuLink}>
+                Home
+              </Link>
+            </div>
           </div>
-          <h1>
-            <Link to="/">React Bricks + Gatsby</Link>
-          </h1>
+          <Link href="/admin" className={styles.callToAction}>
+            Edit Content
+          </Link>
         </div>
-        <Link to="/admin">Admin Dashboard &raquo;</Link>
       </div>
-    </div>
-  </header>
-)
-
+    </header>
+  )
+}
 export default Header

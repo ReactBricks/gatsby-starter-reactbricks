@@ -1,27 +1,16 @@
 import React from 'react'
 
-import Header from './header'
-import './layout.css'
+import Footer from './Footer'
+import Header from './Header'
+import * as styles from './Layout.module.css'
 
 const Layout = ({ children }) => {
   return (
-    <>
+    <div className={styles.layout}>
       <Header />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 896,
-        }}
-      >
-        <main className="content">{children}</main>
-        <footer style={{ borderTop: '1px solid #cbd5e0', paddingTop: 10, paddingBottom: 20 }}>
-          © {new Date().getFullYear()}{' '}
-          <a href="https://www.reactbricks.com">React Bricks</a>, built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </>
+      <main className={styles.children}>{children}</main>
+      <Footer />
+    </div>
   )
 }
 

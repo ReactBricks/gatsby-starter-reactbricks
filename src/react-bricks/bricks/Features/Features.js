@@ -1,8 +1,8 @@
 import React from 'react'
-import { Plain, types, uuid } from 'react-bricks'
+import { Repeater, types, uuid } from 'react-bricks'
 
 import BlockNames from '../BlockNames'
-import styles from './Features.module.css'
+import * as styles from './Features.module.css'
 
 //=============================
 // Colors enum
@@ -15,68 +15,65 @@ const Colors = {
 //=============================
 // Component to be rendered
 //=============================
-const Features = ({ backgroundColor, renderItems }) => {
+const Features = ({ backgroundColor }) => {
   return (
     <section className={styles.features} style={{ backgroundColor }}>
-      <div className={styles.container}>{renderItems}</div>
+      <Repeater
+        propName="FeatureItem"
+        renderWrapper={(items) => (
+          <div className={styles.container}>{items}</div>
+        )}
+      />
     </section>
   )
 }
 
 //=============================
-// Get Default Props
+// Exported BlockType Schema
 //=============================
-const getDefaultProps = () => ({
-  backgroundColor: Colors.white.value,
-  items: [
-    {
-      id: uuid(),
-      type: BlockNames.FeatureItem,
-      props: {
-        imageSource: {
-          src:
-            'https://api.reactbricks.com/images/original/41800240-5e34-11ea-b64f-f36644626031.svg',
-          placeholderSrc:
-            'https://api.reactbricks.com/images/original/41800240-5e34-11ea-b64f-f36644626031.svg',
-          srcSet: '',
+Features.schema = {
+  name: BlockNames.Features,
+  label: 'Features',
+  getDefaultProps: () => ({
+    backgroundColor: Colors.white.value,
+    items: [
+      {
+        id: uuid(),
+        type: BlockNames.FeatureItem,
+        props: {
+          imageSource: {
+            src:
+              'https://api.reactbricks.com/images/original/41800240-5e34-11ea-b64f-f36644626031.svg',
+            placeholderSrc:
+              'https://api.reactbricks.com/images/original/41800240-5e34-11ea-b64f-f36644626031.svg',
+            srcSet: '',
+          },
+          title: 'A React Brick in the wall',
+          text:
+            "We don't need no source control. All in all you are just another React Brick in the wall.",
         },
-        title: Plain.deserialize('A React Brick in the wall'),
-        text: Plain.deserialize(
-          `We don't need no source control. All in all you are just another React Brick in the wall.`
-        ),
+      },
+    ],
+  }),
+  sideEditProps: [
+    {
+      name: 'backgroundColor',
+      label: 'Background',
+      type: types.SideEditPropType.Select,
+      selectOptions: {
+        display: types.OptionsDisplay.Color,
+        options: [Colors.white, Colors.lightGray],
       },
     },
   ],
-})
 
-//=============================
-// Side Edit Props
-//=============================
-const sideEditProps = [
-  {
-    name: 'backgroundColor',
-    label: 'Background',
-    type: types.SideEditPropType.Select,
-    selectOptions: {
-      display: types.OptionsDisplay.Color,
-      options: [Colors.white, Colors.lightGray],
+  repeaterItems: [
+    {
+      name: 'FeatureItem',
+      itemType: BlockNames.FeatureItem,
+      itemLabel: 'Add Feature',
     },
-  },
-]
-
-//=============================
-// Exported BlockType Schema
-//=============================
-const schema = {
-  name: BlockNames.Features,
-  label: 'Features',
-  superType: types.BlockSuperType.Repeater,
-  render: props => <Features {...props} />,
-  getDefaultProps,
-  sideEditProps,
-  itemsType: BlockNames.FeatureItem,
-  addItemText: 'Add feature',
-  removeItemText: 'Remove feature',
+  ],
 }
 
-export default schema
+export default Features

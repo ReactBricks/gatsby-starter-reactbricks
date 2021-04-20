@@ -1,9 +1,9 @@
 import React from 'react'
 import classNames from 'classnames'
-import { Text, RichText, Image, Plain, types } from 'react-bricks'
+import { Text, RichText, Image, types } from 'react-bricks'
 
 import BlockNames from '../BlockNames'
-import styles from './TextImage.module.css'
+import * as styles from './TextImage.module.css'
 
 //=============================
 // Enums
@@ -20,16 +20,7 @@ const Colors = {
 //=============================
 // Component to be rendered
 //=============================
-const TextImage = ({
-  onChange,
-  backgroundColor,
-  imageSide,
-  imageSource,
-  altText,
-  title,
-  text,
-  rounded,
-}) => {
+const TextImage = ({ backgroundColor, imageSide, rounded }) => {
   return (
     <section className={styles.text_image} style={{ backgroundColor }}>
       <div
@@ -44,18 +35,14 @@ const TextImage = ({
             })}
           >
             <Text
-              renderBlock={props => <h2>{props.children}</h2>}
-              value={title}
+              renderBlock={(props) => <h2>{props.children}</h2>}
               placeholder="Type a title..."
               propName="title"
-              onChange={onChange}
             />
             <RichText
-              renderBlock={props => <p>{props.children}</p>}
-              value={text}
+              renderBlock={(props) => <p>{props.children}</p>}
               placeholder="Type a text..."
               propName="text"
-              onChange={onChange}
               allowedFeatures={[
                 types.RichTextFeatures.Bold,
                 types.RichTextFeatures.Italic,
@@ -70,13 +57,11 @@ const TextImage = ({
             })}
           >
             <Image
+              propName="imageSource"
               imageClassName={classNames(styles.image, {
                 [styles.image_rounded]: rounded,
               })}
-              source={imageSource}
-              alt={altText}
-              propName="imageSource"
-              onChange={onChange}
+              alt=""
             />
           </div>
         </React.Fragment>
@@ -84,76 +69,56 @@ const TextImage = ({
     </section>
   )
 }
-
-//=============================
-// Get Default Props
-//=============================
-const getDefaultProps = () => ({
-  backgroundColor: Colors.white,
-  imageSide: ImageSide.Right,
-  imageSource: {
-    src:
-      'https://api.reactbricks.com/images/original/55498a00-5e32-11ea-b64f-f36644626031.svg',
-    placeholderSrc:
-      'https://api.reactbricks.com/images/original/55498a00-5e32-11ea-b64f-f36644626031.svg',
-    srcSet: '',
-  },
-  altText: 'You can trust us',
-  title: Plain.deserialize('You can trust us'),
-  text: Plain.deserialize(
-    'We create and host websites since 1997. We saw the Internet grow up as the standards evolved. We have built hundreds of successful web applications and we still have a lot of fun.'
-  ),
-  rounded: false,
-})
-
-//=============================
-// Side Edit Props
-//=============================
-const sideEditProps = [
-  {
-    name: 'backgroundColor',
-    label: 'Background',
-    type: types.SideEditPropType.Select,
-    selectOptions: {
-      display: types.OptionsDisplay.Color,
-      options: [Colors.white, Colors.lightGray],
-    },
-  },
-  {
-    name: 'imageSide',
-    label: 'Image on side',
-    type: types.SideEditPropType.Select,
-    selectOptions: {
-      display: types.OptionsDisplay.Radio,
-      options: [
-        { value: ImageSide.Right, label: 'Right' },
-        { value: ImageSide.Left, label: 'Left' },
-      ],
-    },
-  },
-  {
-    name: 'altText',
-    label: 'Image Alt Text',
-    type: types.SideEditPropType.Text,
-  },
-  {
-    name: 'rounded',
-    label: 'Rounded border',
-    type: types.SideEditPropType.Boolean,
-  },
-]
-
 //=============================
 // Exported BlockType Schema
 //=============================
-const schema = {
+TextImage.schema = {
   name: BlockNames.TextImage,
   label: 'Text-Image',
-  superType: types.BlockSuperType.Single,
-  render: props => <TextImage {...props} />,
-  getDefaultProps,
-  sideEditProps,
-  textEditProps: ['title', 'text'],
+  getDefaultProps: () => ({
+    backgroundColor: Colors.white,
+    imageSide: ImageSide.Right,
+    imageSource: {
+      src:
+        'https://api.reactbricks.com/images/original/55498a00-5e32-11ea-b64f-f36644626031.svg',
+      placeholderSrc:
+        'https://api.reactbricks.com/images/original/55498a00-5e32-11ea-b64f-f36644626031.svg',
+      srcSet: '',
+    },
+    altText: 'You can trust us',
+    title: 'You can trust us',
+    text:
+      'We create and host websites since 1997. We saw the Internet grow up as the standards evolved. We have built hundreds of successful web applications and we still have a lot of fun.',
+    rounded: false,
+  }),
+  sideEditProps: [
+    {
+      name: 'backgroundColor',
+      label: 'Background',
+      type: types.SideEditPropType.Select,
+      selectOptions: {
+        display: types.OptionsDisplay.Color,
+        options: [Colors.white, Colors.lightGray],
+      },
+    },
+    {
+      name: 'imageSide',
+      label: 'Image on side',
+      type: types.SideEditPropType.Select,
+      selectOptions: {
+        display: types.OptionsDisplay.Radio,
+        options: [
+          { value: ImageSide.Right, label: 'Right' },
+          { value: ImageSide.Left, label: 'Left' },
+        ],
+      },
+    },
+    {
+      name: 'rounded',
+      label: 'Rounded border',
+      type: types.SideEditPropType.Boolean,
+    },
+  ],
 }
 
-export default schema
+export default TextImage

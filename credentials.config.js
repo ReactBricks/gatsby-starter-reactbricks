@@ -1,4 +1,4 @@
 module.exports = {
-  appId: '2c45e3ec-6e8e-4445-8c5d-63cecacfc2ba',
-  apiKey: '55fb8b1a-25ea-4733-a6af-19bc55cb919c',
+  appId: '1bdb2efa-a048-4267-a005-2b6a3818fcaa',
+  apiKey: 'c630a8fa-2669-43cf-b1da-ef64b7c95926',
 }

@@ -1,15 +1,15 @@
 import React from 'react'
 import { Link, navigate } from 'gatsby'
-import pageTypeSchema from './pageTypeSchema'
-import blockTypeSchema from './bricks'
+import pageTypes from './pageTypes'
+import bricks from './bricks'
 import { appId, apiKey } from '../../credentials.config'
 import logo from '../images/logo.svg'
 
 const config = {
   appId,
   apiKey,
-  pageTypeSchema,
-  blockTypeSchema,
+  pageTypes,
+  bricks,
   logo,
   contentClassName: 'content',
   renderLocalLink: ({ href, children, className, activeClassName }) => (
@@ -18,6 +18,7 @@ const config = {
     </Link>
   ),
   navigate,
+  appRootElement: '#___gatsby',
 }
 
 export default config
