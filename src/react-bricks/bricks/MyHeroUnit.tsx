@@ -64,7 +64,7 @@ const MyHeroUnit: types.Brick<HeroUnitProps> = ({ padding }) => {
 //=============================
 MyHeroUnit.schema = {
   name: 'my-hero-unit',
-  label: 'Custom Hero Unit',
+  label: 'Hero Unit',
   getDefaultProps: () => ({
     padding: 'big',
     title: 'This is a custom Hero Unit',

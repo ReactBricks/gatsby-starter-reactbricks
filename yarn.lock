@@ -9263,10 +9263,10 @@ rc@^1.2.7, rc@^1.2.8:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-bricks@3.0.0-alpha.7:
-  version "3.0.0-alpha.7"
-  resolved "https://registry.yarnpkg.com/react-bricks/-/react-bricks-3.0.0-alpha.7.tgz#bf838bfba135001619703de83e872c69b896f51c"
-  integrity sha512-cfdoxB+xm+In6l/GV7ttggP9j1PBY+xHO6elkFQWFr+g17npmgtk2pfdZgdoHlpgHe3WomazBilfe7cX0Jb8zw==
+react-bricks@3.0.0-alpha.8:
+  version "3.0.0-alpha.8"
+  resolved "https://registry.yarnpkg.com/react-bricks/-/react-bricks-3.0.0-alpha.8.tgz#f26ba2cc087b7fea631d7c01bd0bbaab3174cc53"
+  integrity sha512-RlGbFv3YSN0CEbXegQAnpZwQw2alwuNS4PFyacOPgtMmz/8t8xntGMya4nAhAoviceM6y9Xcg6fMwWjEcc3vuA==
   dependencies:
     "@tippyjs/react" "^4.2.5"
     axios "^0.21.1"
