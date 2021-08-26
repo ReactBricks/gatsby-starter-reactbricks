@@ -1,13 +1,14 @@
 import { types } from 'react-bricks'
 
-const pageTypeSchema = [
+const pageTypes: types.IPageType[] = [
   {
     name: 'page',
     pluralName: 'pages',
     defaultLocked: false,
     defaultStatus: types.PageStatus.Published,
+    defaultLanguage: 'en',
     getDefaultContent: () => [],
   },
 ]
 
-export default pageTypeSchema
+export default pageTypes
