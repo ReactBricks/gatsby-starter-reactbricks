@@ -67,7 +67,7 @@ MyHeroUnit.schema = {
   label: 'Hero Unit',
   getDefaultProps: () => ({
     padding: 'big',
-    title: 'This is a custom Hero Unit',
+    title: 'Welcome to React Bricks!',
     text: "We are a hi-tech web development company committed to deliver great products on time. We love to understand our customers' needs and exceed expectations.",
   }),
   sideEditProps: [
