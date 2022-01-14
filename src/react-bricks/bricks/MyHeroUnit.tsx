@@ -26,7 +26,7 @@ const MyHeroUnit: types.Brick<HeroUnitProps> = ({ padding }) => {
         <Image propName="icon" alt="Icon" imageClassName="w-20 mb-5" />
         <Text
           renderBlock={(props) => (
-            <h1 className="text-3xl sm:text-4xl text-center font-black text-gray-900 dark:text-white leading-tight mb-3">
+            <h1 className="text-3xl sm:text-4xl text-center font-black text-gray-900 leading-tight mb-3">
               {props.children}
             </h1>
           )}
@@ -35,7 +35,7 @@ const MyHeroUnit: types.Brick<HeroUnitProps> = ({ padding }) => {
         />
         <RichText
           renderBlock={(props) => (
-            <p className="text-xl text-center leading-relaxed text-gray-700 dark:text-gray-100">
+            <p className="text-xl text-center leading-relaxed text-gray-700">
               {props.children}
             </p>
           )}
@@ -49,7 +49,7 @@ const MyHeroUnit: types.Brick<HeroUnitProps> = ({ padding }) => {
             types.RichTextFeatures.Link,
           ]}
           renderCode={(props) => (
-            <code className="text-sm py-1 px-2 bg-gray-200 dark:bg-gray-700 rounded">
+            <code className="text-sm py-1 px-2 bg-gray-200 rounded">
               {props.children}
             </code>
           )}
