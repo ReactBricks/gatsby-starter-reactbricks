@@ -22,8 +22,8 @@ const MyHeroUnit: types.Brick<HeroUnitProps> = ({ padding }) => {
         padding === 'big' ? 'py-20' : 'py-12'
       }`}
     >
-      <div className="flex flex-col items-center">
-        <Image propName="icon" alt="Icon" imageClassName="w-20 mb-5" />
+      <div>
+        <Image propName="icon" alt="Icon" imageClassName="w-20 mb-5 mx-auto" />
         <Text
           renderBlock={(props) => (
             <h1 className="text-3xl sm:text-4xl text-center font-black text-gray-900 leading-tight mb-3">
