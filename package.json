@@ -10,14 +10,10 @@
     "gatsby-plugin-manifest": "^4.15.0",
     "gatsby-plugin-offline": "^5.15.0",
     "gatsby-plugin-react-helmet": "^5.15.0",
-    "prism-theme-night-owl": "^1.4.0",
-    "prismjs": "^1.28.0",
     "react": "^18.1.0",
     "react-bricks": "^3.2.25",
-    "react-bricks-ui": "^0.4.0",
     "react-dom": "^18.1.0",
-    "react-helmet": "^6.1.0",
-    "react-slick": "^0.29.0"
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
     "@types/react-helmet": "^6.1.5",
