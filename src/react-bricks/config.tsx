@@ -6,8 +6,8 @@ import pageTypes from './pageTypes'
 import GatsbyLink from './GatsbyLink'
 
 const config: types.ReactBricksConfig = {
-  appId: process.env.GATSBY_APP_ID,
-  apiKey: process.env.API_KEY,
+  appId: process.env.GATSBY_APP_ID + '',
+  apiKey: process.env.API_KEY + '',
   pageTypes,
   bricks,
   logo: '/logo.svg',
@@ -29,6 +29,7 @@ const config: types.ReactBricksConfig = {
   enableAutoSave: true,
   disableSaveIfInvalidProps: false,
   enablePreview: true,
+  enablePreviewImage: true,
 }
 
 export default config

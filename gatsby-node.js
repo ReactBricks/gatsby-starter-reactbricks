@@ -10,14 +10,39 @@ exports.createPages = async ({ actions: { createPage } }) => {
   const appId = process.env.GATSBY_APP_ID
   const apiKey = process.env.API_KEY
 
+  let errorHeader = false
+  let errorFooter = false
+  let errorPage = false
+  let errorKeys = false
+
+  const header = await fetchPage('header', apiKey).catch(() => {
+    errorHeader = true
+    return {}
+  })
+  const footer = await fetchPage('footer', apiKey).catch(() => {
+    errorFooter = true
+    return {}
+  })
+
   if (!appId || !apiKey) {
     console.error(
       'App credentials not found. Please, set your GATSBY_APP_ID and API_KEY in your .env.development or .env.production file.'
     )
+
+    errorKeys = true
+
     createPage({
       path: `/`,
       component: require.resolve('./src/templates/page.tsx'),
-      context: { page: null, error: 'NOKEYS' },
+      context: {
+        page: null,
+        header: null,
+        footer: null,
+        errorKeys: errorKeys,
+        errorPage: errorPage,
+        errorHeader: errorHeader,
+        errorFooter: errorFooter,
+      },
     })
     return
   }
@@ -31,7 +56,15 @@ exports.createPages = async ({ actions: { createPage } }) => {
     createPage({
       path: `/`,
       component: require.resolve('./src/templates/page.tsx'),
-      context: { page: null, error: 'NOPAGE' },
+      context: {
+        page: null,
+        header: header,
+        footer: footer,
+        errorKeys: errorKeys,
+        errorPage: errorPage,
+        errorHeader: errorHeader,
+        errorFooter: errorFooter,
+      },
     })
     return
   }
@@ -44,24 +77,22 @@ exports.createPages = async ({ actions: { createPage } }) => {
     { concurrency: 2 }
   )
 
-  // Home Page
-  const homePage = allPagesWithContent.find((page) => page.slug === 'home')
-  if (homePage) {
-    createPage({
-      path: `/`,
-      component: require.resolve('./src/templates/page.tsx'),
-      context: { page: homePage },
-    })
-  }
-
-  // Other pages
+  // Pages
   allPagesWithContent
-    .filter((page) => page.slug !== 'home')
+    .filter((page) => page.slug !== 'header' && page.slug !== 'footer')
     .forEach((page) => {
       createPage({
         path: `/${page.slug}/`,
         component: require.resolve('./src/templates/page.tsx'),
-        context: { page },
+        context: {
+          page: page,
+          header: header,
+          footer: footer,
+          errorKeys: errorKeys,
+          errorPage: errorPage,
+          errorHeader: errorHeader,
+          errorFooter: errorFooter,
+        },
       })
     })
 }
