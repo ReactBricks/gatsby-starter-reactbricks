@@ -82,7 +82,7 @@ exports.createPages = async ({ actions: { createPage } }) => {
     .filter((page) => page.slug !== 'header' && page.slug !== 'footer')
     .forEach((page) => {
       createPage({
-        path: `/${page.slug}/`,
+        path: page.slug === "/" ? page.slug : `/${page.slug}/`,
         component: require.resolve('./src/templates/page.tsx'),
         context: {
           page: page,

@@ -4,7 +4,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby starter React Bricks + Tailwind`,
+        name: `Gatsby starter React Bricks`,
         short_name: `React Bricks Starter`,
         start_url: `/`,
         background_color: `#ffffff`,
@@ -14,5 +14,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
+    `gatsby-plugin-postcss`,
   ],
 }
