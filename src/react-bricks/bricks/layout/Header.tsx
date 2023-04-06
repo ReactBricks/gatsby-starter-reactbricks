@@ -65,7 +65,11 @@ const Header: types.Brick<HeaderProps> = ({}) => {
             className={styles.buttonHamburgerMenu}
             onClick={() => setMobileMenuOpen((current) => !current)}
           >
-            {mobileMenuOpen ? <FiX /> : <FiMenu />}
+            {mobileMenuOpen ? (
+              <FiX size={18} className={styles.hamburgerMenuFiX} />
+            ) : (
+              <FiMenu size={20} className={styles.hamburgerMenuFiMenu} />
+            )}
           </button>
           {mobileMenuOpen && (
             <div className={styles.containerHamburgerMenuItems}>
