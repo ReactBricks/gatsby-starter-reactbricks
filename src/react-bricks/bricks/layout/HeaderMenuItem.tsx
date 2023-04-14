@@ -7,19 +7,21 @@ import * as styles from '../../../css/HeaderMenuItem.module.css'
 interface HeaderMenuItemProps {
   linkPath: string
   linkText: any
-  submenuItems: any
-  isActive: boolean
+  submenuItems?: any
+  mobileRef: React.MutableRefObject<HTMLDivElement>
+  setMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const HeaderMenuItem: types.Brick<HeaderMenuItemProps> = ({
   linkPath,
   linkText,
   submenuItems,
-  isActive,
+  mobileRef,
+  setMobileMenuOpen,
 }) => {
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
-
+  useOnClickOutside(mobileRef, () => setMobileMenuOpen(false))
   useOnClickOutside(ref, () => setOpen(false))
 
   if (!submenuItems || !submenuItems.length) {
@@ -37,7 +39,12 @@ const HeaderMenuItem: types.Brick<HeaderMenuItemProps> = ({
           />
         </Link>
         <Link href={linkPath} className={styles.linkHamburgerMenuItem}>
-          {typeof linkText === 'string' ? linkText : Plain.serialize(linkText)}
+          <div onClick={() => setMobileMenuOpen(false)}>
+            {' '}
+            {typeof linkText === 'string'
+              ? linkText
+              : Plain.serialize(linkText)}
+          </div>
         </Link>
       </div>
     )
@@ -56,15 +63,7 @@ const HeaderMenuItem: types.Brick<HeaderMenuItemProps> = ({
           <Text
             propName="linkText"
             placeholder="Type a text..."
-            renderBlock={({ children }) => (
-              <div
-                className={`
-                  ${isActive ? styles.buttonTextActive : ''}
-                `}
-              >
-                {children}
-              </div>
-            )}
+            renderBlock={({ children }) => <div>{children}</div>}
           />
           {open ? (
             <svg
@@ -94,7 +93,14 @@ const HeaderMenuItem: types.Brick<HeaderMenuItemProps> = ({
         </button>
         {open && (
           <div className={styles.containerSubmenuItemsOpen}>
-            <Repeater propName="submenuItems" />
+            <Repeater
+              propName="submenuItems"
+              renderItemWrapper={(props) => (
+                <div onClick={() => setOpen((current) => !current)}>
+                  {props}
+                </div>
+              )}
+            />
           </div>
         )}
       </div>
@@ -103,7 +109,12 @@ const HeaderMenuItem: types.Brick<HeaderMenuItemProps> = ({
         <div className={styles.containerLinkText}>
           {typeof linkText === 'string' ? linkText : Plain.serialize(linkText)}
         </div>
-        <Repeater propName="submenuItems" />
+        <Repeater
+          propName="submenuItems"
+          renderItemWrapper={(props) => (
+            <div onClick={() => setMobileMenuOpen(false)}>{props}</div>
+          )}
+        />
       </div>
     </div>
   )
@@ -125,7 +136,7 @@ HeaderMenuItem.schema = {
   getDefaultProps: () => ({
     submenuItems: [],
     linkPath: '/about-us',
-    isActive: false,
+
     linkText: 'About us',
   }),
 
