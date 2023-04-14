@@ -1,15 +1,11 @@
-import React, { useContext } from 'react'
-import {
-  PageViewer,
-  cleanPage,
-  ReactBricksContext,
-  types,
-} from 'react-bricks/frontend'
+import React from 'react'
+import { PageViewer, cleanPage, types } from 'react-bricks/frontend'
+import { useReactBricksContext } from 'react-bricks/frontend'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
 import ErrorNoKeys from '../components/errorNoKeys'
-import ErrorNoHeader from "../components/errorNoHeader"
-import ErrorNoFooter from "../components/errorNoFooter"
+import ErrorNoHeader from '../components/errorNoHeader'
+import ErrorNoFooter from '../components/errorNoFooter'
 
 interface ReactBricksPageProps {
   pageContext: {
@@ -34,7 +30,7 @@ const Page: React.FC<ReactBricksPageProps> = ({
     errorFooter,
   },
 }) => {
-  const { pageTypes, bricks } = useContext(ReactBricksContext)
+  const { pageTypes, bricks } = useReactBricksContext()
 
   // Clean the received content
   // Removes unknown or not allowed bricks
