@@ -2,7 +2,7 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-const config = require('./src/react-bricks/config')
+const config = require.resolve('./src/react-bricks/config.tsx')
 const bluebird = require('bluebird')
 const fetchPages = require('react-bricks/frontend').fetchPages
 const fetchPage = require('react-bricks/frontend').fetchPage
