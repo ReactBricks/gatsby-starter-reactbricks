@@ -37,6 +37,7 @@ const Header: types.Brick<HeaderProps> = ({}) => {
         <div className={styles.containerButtons}>
           <Repeater
             propName="buttons"
+            itemProps={{ simpleAnchorLink: true }}
             renderWrapper={(items) => (
               <div className={styles.buttonsWrapper}>{items}</div>
             )}
@@ -51,7 +52,7 @@ const Header: types.Brick<HeaderProps> = ({}) => {
             onClick={toggleColorMode}
           >
             {!isDarkColorMode ? (
-               <BsMoonFill />
+              <BsMoonFill />
             ) : (
               <BsSunFill
                 style={{ fontSize: '1.25rem', lineHeight: '1.75rem' }}
@@ -89,7 +90,7 @@ const Header: types.Brick<HeaderProps> = ({}) => {
           onClick={toggleColorMode}
         >
           {!isDarkColorMode ? (
-             <BsMoonFill />
+            <BsMoonFill />
           ) : (
             <BsSunFill style={{ fontSize: '1.25rem', lineHeight: '1.75rem' }} />
           )}
