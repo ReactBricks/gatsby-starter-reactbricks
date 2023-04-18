@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext } from 'react'
+import React, { ReactNode } from 'react'
 import { useReactBricksContext } from 'react-bricks/frontend'
 
 import * as styles from '../css/layout.module.css'

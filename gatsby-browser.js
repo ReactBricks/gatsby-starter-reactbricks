@@ -7,7 +7,9 @@ import './src/css/style.css'
 const ReactBricksApp = ({ element }) => {
   const savedColorMode =
     typeof window === 'undefined' ? '' : localStorage.getItem('color-mode')
+
   const [colorMode, setColorMode] = useState(savedColorMode || 'light')
+  
   const toggleColorMode = () => {
     const newColorMode = colorMode === 'light' ? 'dark' : 'light'
     setColorMode(newColorMode)

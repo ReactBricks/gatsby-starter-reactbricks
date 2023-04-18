@@ -43,7 +43,7 @@ const Header: types.Brick<HeaderProps> = ({}) => {
           />
         </div>
 
-        <div className={styles.containerHamburgerMenu}>
+        <div ref={ref} className={styles.containerHamburgerMenu}>
           {/* DARK MODE BUTTON MOBILE */}
           <button
             type="button"
@@ -70,7 +70,7 @@ const Header: types.Brick<HeaderProps> = ({}) => {
             )}
           </button>
           {mobileMenuOpen && (
-            <div ref={ref} className={styles.containerHamburgerMenuItems}>
+            <div className={styles.containerHamburgerMenuItems}>
               <Repeater
                 propName="menuItems"
                 itemProps={{
