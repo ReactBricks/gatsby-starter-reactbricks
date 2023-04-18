@@ -10,7 +10,7 @@ export interface ButtonProps {
   href: string
   isTargetBlank: boolean
   buttonType: 'submit' | 'button' | 'reset'
-
+  simpleAnchorLink: boolean
   variant: 'solid' | 'outline'
   padding: 'normal' | 'small'
   className?: string
@@ -21,7 +21,7 @@ const Button: types.Brick<ButtonProps> = ({
   href,
   isTargetBlank,
   buttonType,
-
+  simpleAnchorLink = false,
   variant,
   padding,
   className,
@@ -44,6 +44,7 @@ const Button: types.Brick<ButtonProps> = ({
 
           className
         )}
+        simpleAnchor={simpleAnchorLink}
       >
         <Text
           propName="text"
