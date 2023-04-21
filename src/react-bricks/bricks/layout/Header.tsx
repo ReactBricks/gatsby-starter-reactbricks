@@ -43,23 +43,21 @@ const Header: types.Brick<HeaderProps> = ({}) => {
             )}
           />
         </div>
+        
+        {/* DARK MODE BUTTON */}
+        <button
+          type="button"
+          className={styles.darkModeButton}
+          onClick={toggleColorMode}
+        >
+          {!isDarkColorMode ? (
+            <BsMoonFill />
+          ) : (
+            <BsSunFill style={{ fontSize: '1.25rem', lineHeight: '1.75rem' }} />
+          )}
+        </button>
 
         <div ref={ref} className={styles.containerHamburgerMenu}>
-          {/* DARK MODE BUTTON MOBILE */}
-          <button
-            type="button"
-            className={styles.darkModeButtonMobile}
-            onClick={toggleColorMode}
-          >
-            {!isDarkColorMode ? (
-              <BsMoonFill />
-            ) : (
-              <BsSunFill
-                style={{ fontSize: '1.25rem', lineHeight: '1.75rem' }}
-              />
-            )}
-          </button>
-
           <button
             className={styles.buttonHamburgerMenu}
             onClick={() => setMobileMenuOpen((current) => !current)}
@@ -82,19 +80,6 @@ const Header: types.Brick<HeaderProps> = ({}) => {
             </div>
           )}
         </div>
-
-        {/* DARK MODE BUTTON DESKTOP */}
-        <button
-          type="button"
-          className={styles.darkModeButtonDesktop}
-          onClick={toggleColorMode}
-        >
-          {!isDarkColorMode ? (
-            <BsMoonFill />
-          ) : (
-            <BsSunFill style={{ fontSize: '1.25rem', lineHeight: '1.75rem' }} />
-          )}
-        </button>
       </nav>
     </section>
   )
