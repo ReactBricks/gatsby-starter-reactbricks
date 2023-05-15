@@ -25,7 +25,13 @@ const MyHeroUnit: types.Brick<HeroUnitProps> = ({ padding }) => {
         }`}
       >
         <div>
-          <Image propName="icon" alt="Icon" imageClassName={styles.heroImage} />
+          <Image
+            propName="icon"
+            alt="Icon"
+            maxWidth={200}
+            aspectRatio={1}
+            imageClassName={styles.heroImage}
+          />
           <Text
             renderBlock={(props) => (
               <h1 className={styles.title}>{props.children}</h1>
