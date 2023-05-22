@@ -71,7 +71,6 @@ const FeatureItem: types.Brick<FeatureItemProps> = ({
         {withLink && (
           <div className={styles.linkContainer}>
             <Link
-              propName="link"
               href={linkPath}
               className={classNames(
                 styles.linkWrapper,
