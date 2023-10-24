@@ -17,6 +17,21 @@ const pageTypes: types.IPageType[] = [
     getDefaultContent: () => [],
     isEntity: true,
   },
+  {
+    name: 'pokemon',
+    pluralName: 'pokemon',
+    getExternalData: (page) =>
+      fetch(`https://pokeapi.co/api/v2/pokemon/${page.slug}`)
+        .then((response) => response.json())
+        .then((data) => ({
+          ...data,
+          imageUrl: `https://img.pokemondb.net/artwork/large/${data.name}.jpg`,
+        }))
+        .catch((error) => {
+          console.log(error)
+          return {}
+        }),
+  },
 ]
 
 export default pageTypes
