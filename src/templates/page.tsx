@@ -1,5 +1,11 @@
 import React from 'react'
-import { PageViewer, cleanPage, types } from 'react-bricks/frontend'
+import {
+  PageViewer,
+  cleanPage,
+  renderJsonLd,
+  renderMeta,
+  types,
+} from 'react-bricks/frontend'
 import { useReactBricksContext } from 'react-bricks/frontend'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
@@ -42,11 +48,7 @@ const Page: React.FC<ReactBricksPageProps> = ({
     <Layout>
       {pageOk && !errorPage && !errorKeys && (
         <>
-          <Seo
-            title={page.meta.title!}
-            description={page.meta.description}
-            lang={page.meta.language}
-          />
+          <Seo lang={page.meta.language} />
 
           {headerOk && !errorHeader ? (
             <PageViewer page={headerOk} showClickToEdit={false} />
@@ -69,3 +71,11 @@ const Page: React.FC<ReactBricksPageProps> = ({
 }
 
 export default Page
+
+// Head tag content (meta tag and JsonLd)
+export const Head = ({ pageContext: { page } }) => (
+  <>
+    {renderMeta(page)}
+    {renderJsonLd(page)}
+  </>
+)

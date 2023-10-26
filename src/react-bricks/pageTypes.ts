@@ -8,6 +8,7 @@ const pageTypes: types.IPageType[] = [
     defaultStatus: types.PageStatus.Published,
     defaultLanguage: 'en',
     getDefaultContent: () => [],
+    excludedBlockTypes: ['pokemon'],
   },
   {
     name: 'layout',
@@ -16,6 +17,7 @@ const pageTypes: types.IPageType[] = [
     defaultStatus: types.PageStatus.Published,
     getDefaultContent: () => [],
     isEntity: true,
+    excludedBlockTypes: ['pokemon'],
   },
   {
     name: 'pokemon',
