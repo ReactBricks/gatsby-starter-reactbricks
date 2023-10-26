@@ -73,9 +73,11 @@ const Page: React.FC<ReactBricksPageProps> = ({
 export default Page
 
 // Head tag content (meta tag and JsonLd)
-export const Head = ({ pageContext: { page } }) => (
-  <>
-    {renderMeta(page)}
-    {renderJsonLd(page)}
-  </>
-)
+export const Head = ({ pageContext: { page } }) => {
+  return (
+    <>
+      {page && renderMeta(page)}
+      {page && renderJsonLd(page)}
+    </>
+  )
+}
