@@ -10,6 +10,7 @@ const fetchPage = require('react-bricks/frontend').fetchPage
 exports.createPages = async ({ actions: { createPage } }) => {
   const appId = process.env.GATSBY_APP_ID
   const apiKey = process.env.API_KEY
+  const publicEnvironment = process.env.GATSBY_PUBLIC_ENVIRONMENT
 
   let errorHeader = false
   let errorFooter = false

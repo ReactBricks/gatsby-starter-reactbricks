@@ -8,6 +8,7 @@ import GatsbyLink from './GatsbyLink'
 const config: types.ReactBricksConfig = {
   appId: process.env.GATSBY_APP_ID + '',
   apiKey: process.env.API_KEY + '',
+  environment: process.env.GATSBY_PUBLIC_ENVIRONMENT + '',
   pageTypes,
   bricks,
   logo: '/logo.svg',
