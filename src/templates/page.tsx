@@ -51,15 +51,15 @@ const Page: React.FC<ReactBricksPageProps> = ({
           <Seo lang={page.meta.language} />
 
           {headerOk && !errorHeader ? (
-            <PageViewer page={headerOk} showClickToEdit={false} />
+            <PageViewer page={headerOk} />
           ) : (
             <ErrorNoHeader />
           )}
 
-          <PageViewer page={pageOk} />
+          <PageViewer page={pageOk} main />
 
           {footerOk && !errorFooter ? (
-            <PageViewer page={footerOk} showClickToEdit={false} />
+            <PageViewer page={footerOk} />
           ) : (
             <ErrorNoFooter />
           )}
