@@ -26,8 +26,13 @@ const Footer: types.Brick<FooterProps> = ({}) => {
                 <p className={styles.paragraphRichText}>{children}</p>
               )}
               allowedFeatures={[types.RichTextFeatures.Link]}
-              renderLink={({ children, href }) => (
-                <Link href={href} className={styles.renderLink}>
+              renderLink={({ children, href, target, rel }) => (
+                <Link
+                  href={href}
+                  target={target}
+                  rel={rel}
+                  className={styles.renderLink}
+                >
                   {children}
                 </Link>
               )}
