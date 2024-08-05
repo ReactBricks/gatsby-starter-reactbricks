@@ -13,7 +13,7 @@
     "gatsby-plugin-postcss": "^6.8.0",
     "gatsby-plugin-react-helmet": "^6.8.0",
     "react": "^18.2.0",
-    "react-bricks": "^4.3.0",
+    "react-bricks": "^4.4.5",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0"
   },
